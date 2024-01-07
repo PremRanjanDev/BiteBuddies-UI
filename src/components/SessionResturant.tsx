@@ -32,7 +32,8 @@ const SessionResturant = function ({ sessionName, resturants }: IProps) {
         onClose={() => setOpen(false)}
         onSubmit={console.log}
       />
-      <div className="flex gap-6 overflow-x-auto">
+      {/* overflow-x-auto */}
+      <div className="flex gap-6 flex-wrap  ">
         {resturants &&
           resturants.map(
             (sessionRestaurant: SessionRestaurant, index: number) => (

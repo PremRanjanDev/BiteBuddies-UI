@@ -8,7 +8,7 @@ type Props = {
 
 const SessionBuddyCard = function ({ id, user, status }: Props) {
   return (
-    <div className="border border-orange-600 px-5 py-2 w-fit">
+    <div className="border border-orange-600 px-5 py-2 w-fit rounded-md">
       <h2>{user?.name}</h2>
 
       <div

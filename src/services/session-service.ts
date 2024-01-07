@@ -1,10 +1,16 @@
 import {
+  SESSION_ACTIVE,
+  SESSION_ALL,
+  SESSION_DETAIL,
+} from "../api/session-api";
+import {
   ACTIVE_SESSIONS_RES,
   ALL_SESSIONS_RES,
   GET_SESSION_DETAIL,
   SESSION_INVITE_RES,
   UPDATE_SESSION_RES,
 } from "./mock-session-data";
+import { api } from "./service-helper";
 import { UserInfo } from "./user-service";
 
 export interface RestaurantInfo {
@@ -42,30 +48,30 @@ export async function getActiveSessions(
   onSuccess: (res: any) => void,
   onError: (error: any) => void
 ) {
-  // api
-  //   .get(SESSION_ACTIVE)
-  //   .then((res) => {
-  //     onSuccess(res.data);
-  //   })
-  //   .catch((err) => {
-  //     onError(err);
-  //   });
-  onSuccess(ACTIVE_SESSIONS_RES);
+  api
+    .get(SESSION_ACTIVE)
+    .then((res) => {
+      onSuccess(res.data);
+    })
+    .catch((err) => {
+      onError(err);
+    });
+  // onSuccess(ACTIVE_SESSIONS_RES);
 }
 
 export async function getAllSessions(
   onSuccess: (res: any) => void,
   onError: (error: any) => void
 ) {
-  // api
-  //   .get(SESSION_ALL)
-  //   .then((res) => {
-  //     onSuccess(res.data);
-  //   })
-  //   .catch((err) => {
-  //     onError(err);
-  //   });
-  onSuccess(ALL_SESSIONS_RES);
+  api
+    .get(SESSION_ALL)
+    .then((res) => {
+      onSuccess(res.data);
+    })
+    .catch((err) => {
+      onError(err);
+    });
+  // onSuccess(ALL_SESSIONS_RES);
 }
 
 export async function getSessionDetail(
@@ -73,15 +79,15 @@ export async function getSessionDetail(
   onSuccess: (res: any) => void,
   onError: (error: any) => void
 ) {
-  // api
-  //   .get(SESSION_DETAIL.replace("{id}", id.toString()))
-  //   .then((res) => {
-  //     onSuccess(res.data);
-  //   })
-  //   .catch((err) => {
-  //     onError(err);
-  //   });
-  onSuccess(GET_SESSION_DETAIL);
+  api
+    .get(SESSION_DETAIL.replace("{id}", id.toString()))
+    .then((res) => {
+      onSuccess(res.data);
+    })
+    .catch((err) => {
+      onError(err);
+    });
+  // onSuccess(GET_SESSION_DETAIL);
 }
 
 export async function updateSession(
@@ -90,15 +96,15 @@ export async function updateSession(
   onSuccess: (res: any) => void,
   onError: (error: any) => void
 ) {
-  // api
-  //   .get(SESSION_DETAIL.replace("{id}", id.toString()))
-  //   .then((res) => {
-  //     onSuccess(res.data);
-  //   })
-  //   .catch((err) => {
-  //     onError(err);
-  //   });
-  onSuccess(UPDATE_SESSION_RES);
+  api
+    .get(SESSION_DETAIL.replace("{id}", id.toString()))
+    .then((res) => {
+      onSuccess(res.data);
+    })
+    .catch((err) => {
+      onError(err);
+    });
+  // onSuccess(UPDATE_SESSION_RES);
 }
 
 export async function deleteSession(
@@ -106,15 +112,15 @@ export async function deleteSession(
   onSuccess: (res: any) => void,
   onError: (error: any) => void
 ) {
-  // api
-  //   .get(SESSION_DETAIL.replace("{id}", id.toString()))
-  //   .then((res) => {
-  //     onSuccess(res.data);
-  //   })
-  //   .catch((err) => {
-  //     onError(err);
-  //   });
-  onSuccess(true);
+  api
+    .get(SESSION_DETAIL.replace("{id}", id.toString()))
+    .then((res) => {
+      onSuccess(res.data);
+    })
+    .catch((err) => {
+      onError(err);
+    });
+  // onSuccess(true);
 }
 
 export async function inviteSession(
@@ -123,13 +129,13 @@ export async function inviteSession(
   onSuccess: (res: any) => void,
   onError: (error: any) => void
 ) {
-  // api
-  //   .get(SESSION_DETAIL.replace("{id}", id.toString()))
-  //   .then((res) => {
-  //     onSuccess(res.data);
-  //   })
-  //   .catch((err) => {
-  //     onError(err);
-  //   });
-  onSuccess(SESSION_INVITE_RES);
+  api
+    .get(SESSION_DETAIL.replace("{id}", id.toString()))
+    .then((res) => {
+      onSuccess(res.data);
+    })
+    .catch((err) => {
+      onError(err);
+    });
+  // onSuccess(SESSION_INVITE_RES);
 }

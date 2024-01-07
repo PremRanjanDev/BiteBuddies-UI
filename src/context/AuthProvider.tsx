@@ -1,6 +1,7 @@
 // AuthContext.tsx
 import { createContext, useContext, useEffect, useState } from "react";
-import { getAllUsers, userLogin } from "../services/user-service";
+import { userLogin, userSignUp } from "../services/user-service";
+import { toast } from "react-toastify";
 
 interface User {
   id: number;
@@ -8,58 +9,51 @@ interface User {
   username: string;
 }
 
-const AuthContext = createContext<{
+interface AuthContextProps {
   loggedInUser: User | null;
-  allUsers: User[];
   login: (username: string, password: string) => void;
+  signUp: (name: string, username: string, password: string) => void;
   logout: () => void;
-}>({
-  loggedInUser: null,
-  allUsers: [],
-  login: () => null,
-  logout: () => null,
-});
+}
+
+// Create the context
+const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 export function AuthProvider({ children }: any) {
   const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
-  const [allUsers, setAllUser] = useState<User[]>([]);
-  useEffect(() => {
-    getAllUsers(setAllUser, console.error);
-  }, []);
 
   useEffect(() => {
-    console.log("AuthProvider - loggedInUser: ", loggedInUser);
+    console.log("loggedInUser: ", loggedInUser);
   }, [loggedInUser]);
 
-  const login = (username: string, password: string): boolean => {
-    console.log("AuthProvider - login, :", username, password);
-    userLogin(
-      username,
-      password,
-      (userRes) => {
-        console.log("Login success");
-        setLoggedInUser(userRes);
-      },
-      (e) => {
-        console.log("Login failed");
-        console.error(e);
-      }
-    );
-    return true;
+  const login = (username: string, password: string) => {
+    userLogin(username, password, setLoggedInUser, () => {
+      toast.error("Invalid user name or password");
+    });
   };
 
-  const logout = (): void => {
-    // Clear the current user in the context
+  const signUp = (name: string, username: string, password: string) => {
+    userSignUp(name, username, password, setLoggedInUser, () => {
+      toast.error("Could not create user at the moment");
+    });
+  };
+
+  const logout = () => {
     setLoggedInUser(null);
+    toast.success("Logged out succesfully");
   };
 
   return (
-    <AuthContext.Provider value={{ loggedInUser, allUsers, login, logout }}>
+    <AuthContext.Provider value={{ loggedInUser, login, signUp, logout }}>
       {children}
     </AuthContext.Provider>
   );
 }
 
 export const useAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 };

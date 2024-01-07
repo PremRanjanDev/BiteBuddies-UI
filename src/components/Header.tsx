@@ -1,48 +1,49 @@
-import { useEffect, useState } from 'react';
-import { useAuth } from '../context/AuthProvider';
-import { LoginPopup } from './LoginPopup';
-import { Button } from '@mui/material';
+import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthProvider";
+import { LoginPopup } from "./LoginPopup";
+import { Button } from "@mui/material";
 
 export const Header = () => {
   const auth = useAuth();
-  const [authenticated, setAuthenticated] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
+  const handleLogout = (e: any) => {
+    e.preventDefault();
+    auth.logout();
+  };
 
   useEffect(() => {
-    console.log('auth: ', auth);
-  }, []);
-
-  useEffect(() => {
-    if (!auth) {
-      setAuthenticated(true);
-    }
-  }, [auth]);
-
-  useEffect(() => {
-    console.log('showLogin: ', showLogin);
+    console.log("showLogin: ", showLogin);
   });
 
   return (
-    <header className='w-full flex py-5 px-7 justify-between bg-orange-400'>
-      <h1 className='m-0 text-3xl'>Bite Buddies</h1>
+    <header className="w-full flex py-5 px-7 justify-between bg-orange-400">
+      <h1 className="m-0 text-3xl">Bite Buddies</h1>
       <section>
-        <Button variant='contained' onClick={() => setShowLogin(!showLogin)}>Login now</Button>
-        <LoginPopup
-        
+        {auth.loggedInUser ? (
+          <div className="flex gap-5">
+            {"Hello, " + auth.loggedInUser.name}
+            <Button variant="contained" onClick={handleLogout}>
+              Logout
+            </Button>
+          </div>
+        ) : (
+          <div>{"Hello, User"}</div>
+          // <div className="flex gap-5">
+          //   {"Hello, User"}
+          //   <Button
+          //     variant="contained"
+          //     onClick={() => setShowLogin(!showLogin)}
+          //   >
+          //     Login now
+          //   </Button>
+          // </div>
+        )}
+
+        {/* <LoginPopup
           open={!showLogin}
           onClose={() => setShowLogin(!showLogin)}
-        />
+        /> */}
       </section>
-      {/* {auth.currentUser ? (
-        <div>
-          {auth.currentUser?.name}
-          <button onClick={auth.logout}>Logout</button>
-        </div>
-      ) : (
-        <div>
-          <button onClick={() => setShowLogin(true)}>Login</button>
-        </div>
-      )} */}
     </header>
   );
 };
