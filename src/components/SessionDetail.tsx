@@ -1,35 +1,12 @@
 import { useEffect, useState } from "react";
 import { BiteSession, getSessionDetail } from "../services/session-service";
 import { EditSessionDetail } from "./EditSessionDetail";
-import Loader from "./Loader";
 import { ViewSessionDetail } from "./ViewSessionDetail";
-import {
-  Modal,
-  Box,
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  Button,
-} from "@mui/material";
 
 type Props = {
   id: number;
   // open: boolean;
   // onClose: () => void;
-};
-
-const style = {
-  position: "absolute" as "absolute",
-  // top: '50%',
-  // left: '50%',
-  // transform: 'translate(-50%, -50%)',
-  width: "80%",
-  height: "80%",
-  bgcolor: "background.paper",
-  // border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  overflowX: "auto",
 };
 
 export const SessionDetail = ({ id }: Props) => {
@@ -53,11 +30,6 @@ export const SessionDetail = ({ id }: Props) => {
 
   return (
     <>
-      {/* <div
-        // open={open}
-        // onClose={onClose}
-        className="flex justify-center items-center font-mono"
-      > */}
       <div>
         {sessionDetail ? (
           isEdit ? (

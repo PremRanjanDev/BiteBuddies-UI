@@ -1,6 +1,6 @@
 // AuthContext.tsx
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { getALlUsers, userLogin } from "../services/user-service";
+import { createContext, useContext, useEffect, useState } from "react";
+import { getAllUsers, userLogin } from "../services/user-service";
 
 interface User {
   id: number;
@@ -24,7 +24,7 @@ export function AuthProvider({ children }: any) {
   const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
   const [allUsers, setAllUser] = useState<User[]>([]);
   useEffect(() => {
-    getALlUsers(setAllUser, console.error);
+    getAllUsers(setAllUser, console.error);
   }, []);
 
   useEffect(() => {

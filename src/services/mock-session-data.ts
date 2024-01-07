@@ -78,6 +78,158 @@ export const ACTIVE_SESSIONS_RES = [
     active: true,
     createdAt: "2024-01-03T17:55:50.885043",
   },
+
+  {
+    id: 1,
+    name: "New Year Party",
+    description: "Lets celebrate new year 2024",
+    startsAt: "2024-01-05T17:55:50.885043",
+    initiatedByUserId: 1,
+    initiatedBy: {
+      id: 1,
+      name: "John",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
+  {
+    id: 3,
+    name: "Release Celebration",
+    description: "Lets celebrate our last release",
+    initiatedByUserId: 3,
+    initiatedBy: {
+      id: 3,
+      name: "Prem",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
+  {
+    id: 2,
+    name: "Release Celebration",
+    description: "Lets celebrate our last release",
+    initiatedByUserId: 2,
+    initiatedBy: {
+      id: 2,
+      name: "Prem",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
+
+  {
+    id: 1,
+    name: "New Year Party",
+    description: "Lets celebrate new year 2024",
+    startsAt: "2024-01-05T17:55:50.885043",
+    initiatedByUserId: 1,
+    initiatedBy: {
+      id: 1,
+      name: "John",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
+  {
+    id: 3,
+    name: "Release Celebration",
+    description: "Lets celebrate our last release",
+    initiatedByUserId: 3,
+    initiatedBy: {
+      id: 3,
+      name: "Prem",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
+  {
+    id: 2,
+    name: "Release Celebration",
+    description: "Lets celebrate our last release",
+    initiatedByUserId: 2,
+    initiatedBy: {
+      id: 2,
+      name: "Prem",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
+
+  {
+    id: 1,
+    name: "New Year Party",
+    description: "Lets celebrate new year 2024",
+    startsAt: "2024-01-05T17:55:50.885043",
+    initiatedByUserId: 1,
+    initiatedBy: {
+      id: 1,
+      name: "John",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
+  {
+    id: 3,
+    name: "Release Celebration",
+    description: "Lets celebrate our last release",
+    initiatedByUserId: 3,
+    initiatedBy: {
+      id: 3,
+      name: "Prem",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
+  {
+    id: 2,
+    name: "Release Celebration",
+    description: "Lets celebrate our last release",
+    initiatedByUserId: 2,
+    initiatedBy: {
+      id: 2,
+      name: "Prem",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
+
+  {
+    id: 1,
+    name: "New Year Party",
+    description: "Lets celebrate new year 2024",
+    startsAt: "2024-01-05T17:55:50.885043",
+    initiatedByUserId: 1,
+    initiatedBy: {
+      id: 1,
+      name: "John",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
+  {
+    id: 3,
+    name: "Release Celebration",
+    description: "Lets celebrate our last release",
+    initiatedByUserId: 3,
+    initiatedBy: {
+      id: 3,
+      name: "Prem",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
+  {
+    id: 2,
+    name: "Release Celebration",
+    description: "Lets celebrate our last release",
+    initiatedByUserId: 2,
+    initiatedBy: {
+      id: 2,
+      name: "Prem",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
 ];
 
 // API call as {url}/session/2
@@ -110,8 +262,326 @@ export const GET_SESSION_DETAIL = {
       },
       status: "joined",
     },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
+
+    {
+      sessionId: 2,
+      user: {
+        id: 2,
+        name: "Mark",
+      },
+      status: "invited",
+    },
+    {
+      sessionId: 2,
+      user: {
+        id: 1,
+        name: "John",
+      },
+      status: "joined",
+    },
   ],
   sessionRestaurant: [
+    {
+      sessionId: 2,
+      restaurant: {
+        id: 2,
+        name: "Fork n Spoon Restaurant",
+        location: "13 Siglap Rd, Mandarin Gardens, Singapore 448911",
+        imageUrl:
+          "https://lh5.googleusercontent.com/p/AF1QipNal24_u46oGaZeulxqObhV7StUANV7gr8M_JHY=w408-h306-k-no",
+      },
+      submittedByUserId: 5,
+    },
+    {
+      sessionId: 2,
+      restaurant: {
+        id: 1,
+        url: "https://maps.app.goo.gl/GL9FospvS87YwZYs9",
+      },
+      submittedByUserId: 6,
+    },
+
+    {
+      sessionId: 2,
+      restaurant: {
+        id: 2,
+        name: "Fork n Spoon Restaurant",
+        location: "13 Siglap Rd, Mandarin Gardens, Singapore 448911",
+        imageUrl:
+          "https://lh5.googleusercontent.com/p/AF1QipNal24_u46oGaZeulxqObhV7StUANV7gr8M_JHY=w408-h306-k-no",
+      },
+      submittedByUserId: 5,
+    },
+    {
+      sessionId: 2,
+      restaurant: {
+        id: 1,
+        url: "https://maps.app.goo.gl/GL9FospvS87YwZYs9",
+      },
+      submittedByUserId: 6,
+    },
+
+    {
+      sessionId: 2,
+      restaurant: {
+        id: 2,
+        name: "Fork n Spoon Restaurant",
+        location: "13 Siglap Rd, Mandarin Gardens, Singapore 448911",
+        imageUrl:
+          "https://lh5.googleusercontent.com/p/AF1QipNal24_u46oGaZeulxqObhV7StUANV7gr8M_JHY=w408-h306-k-no",
+      },
+      submittedByUserId: 5,
+    },
+    {
+      sessionId: 2,
+      restaurant: {
+        id: 1,
+        url: "https://maps.app.goo.gl/GL9FospvS87YwZYs9",
+      },
+      submittedByUserId: 6,
+    },
+
+    {
+      sessionId: 2,
+      restaurant: {
+        id: 2,
+        name: "Fork n Spoon Restaurant",
+        location: "13 Siglap Rd, Mandarin Gardens, Singapore 448911",
+        imageUrl:
+          "https://lh5.googleusercontent.com/p/AF1QipNal24_u46oGaZeulxqObhV7StUANV7gr8M_JHY=w408-h306-k-no",
+      },
+      submittedByUserId: 5,
+    },
+    {
+      sessionId: 2,
+      restaurant: {
+        id: 1,
+        url: "https://maps.app.goo.gl/GL9FospvS87YwZYs9",
+      },
+      submittedByUserId: 6,
+    },
+
     {
       sessionId: 2,
       restaurant: {

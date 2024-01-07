@@ -1,25 +1,30 @@
 import {
-  SESSION_ACTIVE,
-  SESSION_ALL,
-  SESSION_DETAIL,
-} from "../api/session-api";
-import {
   ACTIVE_SESSIONS_RES,
   ALL_SESSIONS_RES,
   GET_SESSION_DETAIL,
   SESSION_INVITE_RES,
   UPDATE_SESSION_RES,
 } from "./mock-session-data";
-import { api } from "./service-helper";
 import { UserInfo } from "./user-service";
 
-interface RestaurantInfo {
+export interface RestaurantInfo {
   id: number;
   name: string;
   location: string;
   imageUrl: string;
 }
 
+export interface SessionRestaurant {
+  sessionId: number;
+  restaurant: RestaurantInfo;
+  submittedByUserId: number;
+}
+
+export interface SessionUsers {
+  sessionId: number;
+  user: UserInfo;
+  status: "invited" | "joined";
+}
 export interface BiteSession {
   id: number;
   name: string;
@@ -29,16 +34,8 @@ export interface BiteSession {
   initiatedBy: UserInfo;
   active: boolean;
   createdAt: string;
-  sessionUsers?: {
-    sessionId: number;
-    user: UserInfo;
-    status: "invited" | "joined";
-  }[];
-  sessionRestaurant?: {
-    sessionId: number;
-    restaurant: RestaurantInfo;
-    submittedByUserId: 5;
-  }[];
+  sessionUsers?: SessionUsers[];
+  sessionRestaurant?: SessionRestaurant[];
 }
 
 export async function getActiveSessions(

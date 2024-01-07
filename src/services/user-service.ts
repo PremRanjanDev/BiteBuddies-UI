@@ -1,10 +1,8 @@
-import { USER_ALL, USER_LOGIN, USER_SIGN_UP } from "../api/user-api";
 import {
   ALL_USERS_RES,
   LOGIN_USER_RES,
   SIGNUP_USER_RES,
 } from "./mock-user-data";
-import { api } from "./service-helper";
 
 export interface UserInfo {
   id: number;
@@ -47,7 +45,7 @@ export async function userSignUp(
   onSuccess(SIGNUP_USER_RES);
 }
 
-export async function getALlUsers(
+export async function getAllUsers(
   onSuccess: (res: any) => void,
   onError: (error: any) => void
 ) {

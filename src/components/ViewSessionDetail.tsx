@@ -2,8 +2,8 @@ import { Button } from "@mui/material";
 import { FaClock } from "react-icons/fa";
 
 import { BiteSession } from "../services/session-service";
-import SessionResturant from "./SessionResturant";
 import SessionBuddies from "./SessionBuddies";
+import SessionResturant from "./SessionResturant";
 
 interface Props {
   session: BiteSession;
@@ -12,7 +12,7 @@ interface Props {
 
 export const ViewSessionDetail = ({ session, onEditClick }: Props) => {
   return (
-    <div>
+    <>
       <div>
         <div className="flex gap-5">
           <h1 className="text-3xl">{session.name}</h1>
@@ -20,7 +20,10 @@ export const ViewSessionDetail = ({ session, onEditClick }: Props) => {
             Edit
           </Button>
         </div>
-        {session.description}
+
+        <div className="text-left py-2">
+          <h1>{session.description}</h1>
+        </div>
       </div>
       <div className="flex items-center gap-3" title="Started at">
         <small className="text-orange-600">
@@ -42,10 +45,17 @@ export const ViewSessionDetail = ({ session, onEditClick }: Props) => {
           new Date(session.createdAt).toUTCString().slice(0, 16)}
       </div> */}
 
-      <div className="overflow-x-auto">
-        <SessionResturant restaurants={session.sessionRestaurant} />
+      <div className="overflow-x-hidden">
+        <SessionResturant
+          sessionName={session.name}
+          resturants={session.sessionRestaurant}
+        />
       </div>
-      <SessionBuddies buddies={session.sessionUsers} />
-    </div>
+      {/* <SessionBuddies buddies={session.sessionUsers} /> */}
+      <SessionBuddies
+        sessionName={session.name}
+        buddies={session.sessionUsers}
+      />
+    </>
   );
 };

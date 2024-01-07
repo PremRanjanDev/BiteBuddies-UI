@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { BiteSession, getActiveSessions } from "../services/session-service";
 import Loader from "./Loader";
-import SessionPreviewCard from "./SessionPreviewCard";
 import { SessionDetail } from "./SessionDetail";
+import SessionPreviewCard from "./SessionPreviewCard";
 
 export const Dashboard = () => {
   const [activeSessions, setActiveSessions] = useState<BiteSession[]>([]);
@@ -33,10 +33,16 @@ export const Dashboard = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <div className="flex gap-10 py-5 px-2">
-        <div>
+      <div className="flex gap-10 px-2 h-[100vh] overflow-hidden">
+        <div
+          style={{
+            width: "30%",
+            height: "calc(100vh - 76.5px)",
+            overflowY: "auto",
+          }}
+        >
           {activeSessions.length && (
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 p-2">
               {activeSessions.map((session: BiteSession, index: number) => (
                 <SessionPreviewCard
                   key={index}
@@ -48,7 +54,14 @@ export const Dashboard = () => {
             </div>
           )}
         </div>
-        <div>
+        <div
+          style={{
+            width: "100%",
+            padding: ".5rem 0",
+            height: "calc(100vh - 76.5px + 16px)",
+            overflowY: "auto",
+          }}
+        >
           {selectedId ? (
             <SessionDetail
               // open={showDetail}
