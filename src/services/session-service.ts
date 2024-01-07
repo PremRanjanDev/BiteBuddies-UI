@@ -1,17 +1,14 @@
 import {
+  SESSION,
   SESSION_ACTIVE,
   SESSION_ALL,
   SESSION_DETAIL,
+  SESSION_INVITE,
 } from "../api/session-api";
-import {
-  ACTIVE_SESSIONS_RES,
-  ALL_SESSIONS_RES,
-  GET_SESSION_DETAIL,
-  SESSION_INVITE_RES,
-  UPDATE_SESSION_RES,
-} from "./mock-session-data";
 import { api } from "./service-helper";
 import { UserInfo } from "./user-service";
+
+import { toast } from "react-toastify";
 
 export interface RestaurantInfo {
   id: number;
@@ -35,7 +32,7 @@ export interface BiteSession {
   id: number;
   name: string;
   description: string;
-  startsAt: string;
+  startsAt?: string;
   initiatedByUserId: number;
   initiatedBy: UserInfo;
   active: boolean;
@@ -90,19 +87,34 @@ export async function getSessionDetail(
   // onSuccess(GET_SESSION_DETAIL);
 }
 
-export async function updateSession(
-  id: number,
+export async function createSession(
   data: BiteSession,
   onSuccess: (res: any) => void,
   onError: (error: any) => void
 ) {
   api
-    .get(SESSION_DETAIL.replace("{id}", id.toString()))
+    .post(SESSION, data)
     .then((res) => {
       onSuccess(res.data);
     })
     .catch((err) => {
-      onError(err);
+      onError ? onError(err) : toast.error("Could not create session");
+    });
+  // onSuccess(UPDATE_SESSION_RES);
+}
+
+export async function updateSession(
+  data: BiteSession,
+  onSuccess: (res: any) => void,
+  onError: (error: any) => void
+) {
+  api
+    .put(SESSION, data)
+    .then((res) => {
+      onSuccess(res.data);
+    })
+    .catch((err) => {
+      onError ? onError(err) : toast.error("Could not update session");
     });
   // onSuccess(UPDATE_SESSION_RES);
 }
@@ -118,24 +130,24 @@ export async function deleteSession(
       onSuccess(res.data);
     })
     .catch((err) => {
-      onError(err);
+      onError ? onError(err) : toast.error("Could not delete session");
     });
   // onSuccess(true);
 }
 
-export async function inviteSession(
+export async function inviteUser(
   id: number,
-  userIds: [1, 2, 3],
+  userIds: number[],
   onSuccess: (res: any) => void,
-  onError: (error: any) => void
+  onError?: (error: any) => void
 ) {
   api
-    .get(SESSION_DETAIL.replace("{id}", id.toString()))
+    .put(SESSION_DETAIL.replace("{id}", id.toString()), userIds)
     .then((res) => {
       onSuccess(res.data);
     })
     .catch((err) => {
-      onError(err);
+      onError ? onError(err) : toast.error("Could not invite users");
     });
   // onSuccess(SESSION_INVITE_RES);
 }

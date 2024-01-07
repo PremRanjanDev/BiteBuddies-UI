@@ -8,8 +8,9 @@ import {
   TextField,
 } from "@mui/material";
 
-import React, { useState } from "react";
-import { UserInfo } from "../services/user-service";
+import React, { useEffect } from "react";
+import { toast } from "react-toastify";
+import { UserInfo, getAllUsers } from "../services/user-service";
 
 const style = {
   position: "absolute" as "absolute",
@@ -31,14 +32,16 @@ interface IProps {
 }
 
 function InviteUser({ open, sessionName, onSubmit, onClose }: IProps) {
-  const [params, setParams] = useState<any[]>([]);
-  const [selectUserId, setSelectUserId] = useState<number>();
-
   const [users, setUsers] = React.useState<UserInfo[]>([]);
-  const [value, setValue] = React.useState<UserInfo[]>([]);
+  const [selectedUsers, setSelectedUsers] = React.useState<UserInfo[]>([]);
 
-  const handleSubmit = function () {
-    const userIds = value.map((u) => u.id);
+  useEffect(() => {
+    getAllUsers(setUsers, () => toast.error("Could not fetch users"));
+  }, []);
+
+  const handleSubmit = function (e: any) {
+    e.preventDefault();
+    const userIds = selectedUsers.map((u) => u.id);
     onSubmit(userIds);
   };
 
@@ -51,12 +54,12 @@ function InviteUser({ open, sessionName, onSubmit, onClose }: IProps) {
     >
       <Box sx={style}>
         <form onSubmit={handleSubmit}>
-          <h2>{`Submit a new resturaunt for ${sessionName}`}</h2>
+          <h2>{`Invite a user for ${sessionName}`}</h2>
           <FormControl fullWidth sx={{ m: 1 }}>
             <Autocomplete
-              value={value}
+              value={selectedUsers}
               onChange={(event, newValue) => {
-                setValue(newValue as UserInfo[]); // Ensure newValue is treated as UserInfo[]
+                setSelectedUsers(newValue as UserInfo[]);
               }}
               multiple
               id="tags-filled"
@@ -86,7 +89,11 @@ function InviteUser({ open, sessionName, onSubmit, onClose }: IProps) {
           </FormControl>
 
           <Box className="flex justify-between items-end">
-            <Button variant="contained" type="submit" disabled={!selectUserId}>
+            <Button
+              variant="contained"
+              type="submit"
+              disabled={!selectedUsers || selectedUsers.length < 1}
+            >
               Invite now
             </Button>
           </Box>

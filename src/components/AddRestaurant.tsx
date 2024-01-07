@@ -22,28 +22,22 @@ interface IProps {
 }
 
 function AddRestaurant({ open, sessionName, onSubmit, onClose }: IProps) {
-  const [form, setForm] = useState({
+  const [restaurantDetail, setRestaurantDetail] = useState({
     name: "",
     location: "",
     imageUrl: "",
   });
-  const [disable, setDisable] = useState(true);
 
-  const checkIsEmpty = function () {
-    if (form.name && form.location && form.imageUrl) {
-      setDisable(false);
-    }
-  };
-
-  const handleSubmit = function () {
-    onSubmit(form);
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    onSubmit(restaurantDetail);
   };
 
   const handleValueChange = function (e: any) {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-    checkIsEmpty();
+    setRestaurantDetail({ ...restaurantDetail, [name]: value });
   };
+
   return (
     <Modal
       open={open}
@@ -61,7 +55,7 @@ function AddRestaurant({ open, sessionName, onSubmit, onClose }: IProps) {
               label="Restaurant name"
               type="text"
               name="name"
-              value={form?.name}
+              value={restaurantDetail?.name}
               onChange={handleValueChange}
               // color='warning'
               // helperText='Some important text'
@@ -76,7 +70,7 @@ function AddRestaurant({ open, sessionName, onSubmit, onClose }: IProps) {
               rows={3}
               multiline
               name="location"
-              value={form?.location}
+              value={restaurantDetail?.location}
               onChange={handleValueChange}
               // color='warning'
               // helperText='username already exist'
@@ -88,14 +82,18 @@ function AddRestaurant({ open, sessionName, onSubmit, onClose }: IProps) {
               id="image-url"
               label="Image URL"
               name="imageUrl"
-              value={form?.imageUrl}
+              value={restaurantDetail?.imageUrl}
               onChange={handleValueChange}
               // type={signupPassword}
             />
           </FormControl>
 
           <Box className="flex justify-between items-end">
-            <Button variant="contained" type="submit" disabled={!form.name}>
+            <Button
+              variant="contained"
+              type="submit"
+              disabled={!restaurantDetail.name}
+            >
               Submit now
             </Button>
           </Box>

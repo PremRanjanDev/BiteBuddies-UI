@@ -4,6 +4,7 @@ import { FaClock } from "react-icons/fa";
 import { BiteSession } from "../services/session-service";
 import SessionBuddies from "./SessionBuddies";
 import SessionResturant from "./SessionResturant";
+import { useAuth } from "../context/AuthProvider";
 
 interface Props {
   session: BiteSession;
@@ -11,14 +12,19 @@ interface Props {
 }
 
 export const ViewSessionDetail = ({ session, onEditClick }: Props) => {
+  const auth = useAuth();
+
   return (
     <>
       <div>
         <div className="flex gap-5">
           <h1 className="text-3xl">{session.name}</h1>
-          <Button variant="outlined" onClick={onEditClick}>
-            Edit
-          </Button>
+          {auth.loggedInUser &&
+            auth.loggedInUser.id === session.initiatedByUserId && (
+              <Button variant="outlined" onClick={onEditClick}>
+                Edit
+              </Button>
+            )}
         </div>
 
         <div className="text-left py-2">
@@ -53,6 +59,7 @@ export const ViewSessionDetail = ({ session, onEditClick }: Props) => {
       </div>
       {/* <SessionBuddies buddies={session.sessionUsers} /> */}
       <SessionBuddies
+        sessionId={session.id}
         sessionName={session.name}
         buddies={session.sessionUsers}
       />

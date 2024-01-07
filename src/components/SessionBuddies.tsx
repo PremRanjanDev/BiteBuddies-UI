@@ -1,17 +1,25 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { FaUsers } from "react-icons/fa";
-import { SessionUsers } from "../services/session-service";
+import { SessionUsers, inviteUser } from "../services/session-service";
 import InviteUser from "./InviteUser";
 import SessionBuddyCard from "./SessionBuddyCard";
 
 interface IProps {
   buddies?: SessionUsers[];
   sessionName: string;
+  sessionId: number;
 }
 
-function SessionBuddies({ buddies, sessionName }: IProps) {
+function SessionBuddies({ buddies, sessionName, sessionId }: IProps) {
   const [openInvite, setOpenInvite] = useState(false);
+  const handleInvite = (userIds: number[]) => {
+    inviteUser(sessionId, userIds, (res) => {
+      buddies?.push(res);
+      setOpenInvite(false);
+    });
+  };
+
   return (
     <section className="flex flex-col gap-2 w-full justify-center">
       <div className="flex gap-4 text-xl items-center">
@@ -25,7 +33,7 @@ function SessionBuddies({ buddies, sessionName }: IProps) {
         sessionName={sessionName}
         open={openInvite}
         onClose={() => setOpenInvite(false)}
-        onSubmit={console.log}
+        onSubmit={handleInvite}
       />
       <div className="flex flex-wrap gap-5 py-5">
         {buddies &&
